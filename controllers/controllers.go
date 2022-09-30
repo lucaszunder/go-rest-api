@@ -15,14 +15,12 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func ListPersonalities(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-type", "application/json")
 	var p []models.Personality
 	database.DB.Find(&p)
 	json.NewEncoder(w).Encode(p)
 }
 
 func GetOnePersonality(w http.ResponseWriter, r *http.Request) {
-
 	vars := mux.Vars(r)
 
 	id := vars["id"]
@@ -33,7 +31,6 @@ func GetOnePersonality(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreatePersonality(w http.ResponseWriter, r *http.Request) {
-
 	var p models.Personality
 	json.NewDecoder(r.Body).Decode(&p)
 
@@ -51,7 +48,6 @@ func DeletePersonality(w http.ResponseWriter, r *http.Request) {
 }
 
 func UpdatePersonality(w http.ResponseWriter, r *http.Request) {
-
 	vars := mux.Vars(r)
 
 	id := vars["id"]
